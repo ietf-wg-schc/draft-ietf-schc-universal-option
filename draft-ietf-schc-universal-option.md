@@ -3,7 +3,9 @@ v: 3
 
 title: Options representation in SCHC YANG Data Models
 abbrev: SCHC for CoAP
-docname: draft-ietf-schc-universal-option-00
+docname: draft-ietf-schc-universal-option-01
+ipr: trust200902
+
 
 v3xml2rfc:
   silence:
@@ -66,9 +68,14 @@ entity:
 The idea of keeping option identifiers in SCHC Rules simplifies the interoperability and the evolution of SCHC compression, when the protocol introduces new options, that can be unknown from the current SCHC implementation. This document discuss the augmentation of the current YANG Data Model, in order to add in the Rule options identifiers used by the protocol.
 
 
+
 --- middle
 
 # Introduction # {#intro}
+
+This document aims to be included in a revision of {{RFC9363}} to replace the definition
+of identifiers for CoAP options.
+
 
 Static Context Header Compression (SCHC) provides an essential mechanism for efficient communication in constrained networks by compressing protocol headers using predefined Rules. Originally developed for Low Power Wide Area Networks (LPWANs), SCHC has proven effective in scenarios with limited bandwidth, power constraints, and predictable traffic patterns.
 
@@ -400,6 +407,7 @@ The statement "ordered-by user;" MUST be included in a revision of {{RFC9363}}.
 This appendix defines the work in progress YANG Data Model to extend the Data Model defined in {{RFC9363}}.
 
 ~~~~~~~~~~~ yang
+<CODE BEGINS> file "ietf-schc-opt@2024-12-19.yang"
 module ietf-schc-opt {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-schc-opt";
@@ -495,7 +503,7 @@ module ietf-schc-opt {
     }
     leaf field-length {
       type schc:fl-type;
-      
+
       mandatory true;
       description
         "Field Length, expressed in number of bits if the length is
@@ -598,6 +606,7 @@ module ietf-schc-opt {
 
   }
 }
+<CODE ENDS>
 ~~~~~~~~~~~
 {: sourcecode-name="ietf-schc-opt@2024-12-19.yang" sourcecode-markers="true"}
 
